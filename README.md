@@ -15,6 +15,7 @@
 | 2 | Spring AI（Java） | 定位与分层抽象、BOM 与 starter、`ChatModel` / `ChatClient` / `Advisor`、`@Tool` 与 `ToolCallback`、`entity()` 结构化输出、`ChatMemory`、`VectorStore` 与文档 ETL、MCP Client/Server、Micrometer 观测、版本差异与常见坑 |
 | 3 | Python 生态 | 生态地图（裸 SDK / LangChain / LangGraph / LlamaIndex / Pydantic AI / OpenAI Agents SDK）、不用框架的最小循环、工具 schema 三种写法、结构化输出、LangGraph 状态图与检查点、轻量框架、检索与评测、虚拟环境 |
 | 4 | 对照与落地 | Spring AI ↔ Python 概念映射表、选型决策树、迁移时的心智模型差异、上线前检查清单 |
+| 5 | 深入与架构（进阶阅读） | Spring AI 的 Advisor / 工具执行链、Python 编排运行时与持久化执行、上下文工程（预算·压缩·检索优化）、**生产级 Agent 架构全景**、工作流编排模式、多智能体隔离，以及企业知识库助手、Text-to-SQL 智能体、可靠性与评测门禁等真实架构案例 |
 
 **总纲（先看这 5 句）**
 
@@ -28,7 +29,7 @@
 
 ## 内容
 
-每篇包含：front matter（难度 / 标签 / 一句话摘要）、`[!ABSTRACT]` 核心要点、SVG 图解、对比表格、常见坑、页尾自测题。格式规范见 [WRITING_GUIDE.md](WRITING_GUIDE.md)。
+每篇包含：front matter（难度 / 标签 / 一句话摘要）、`[!ABSTRACT]` 核心要点、SVG 图解、对比表格、常见坑、页尾自测题。前四类是**初学者主线**；第五类「深入与架构」是进阶阅读，增加机制时序、关键参数、架构取舍与真实架构案例，但仍只讲设计与图解，**不附带可运行项目 demo**。格式规范见 [WRITING_GUIDE.md](WRITING_GUIDE.md)。
 
 站点格式与工具链沿用 [java-notes](https://github.com/Hhb97/java-notes)：顶部分类标签 + 多级目录、页内大纲与滚动高亮、全文搜索（<kbd>Ctrl</kbd>+<kbd>K</kbd>）、明暗主题、代码高亮与复制、图解点击放大、阅读进度。纯静态，无构建步骤。
 

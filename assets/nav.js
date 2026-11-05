@@ -91,5 +91,31 @@ window.NAV = [
         ]
       }
     ]
+  },
+  {
+    id: 'deep', title: '深入与架构', desc: '进阶阅读：机制原理、生产级架构与真实案例',
+    children: [
+      {
+        title: '机制深入', children: [
+          { title: 'Spring AI 机制深入：Advisor 与工具执行链', path: 'deep/spring-ai-internals' },
+          { title: 'Python 编排深入：运行时与持久化执行', path: 'deep/python-internals' },
+          { title: '上下文工程深入：预算、压缩与检索优化', path: 'deep/context-engineering' }
+        ]
+      },
+      {
+        title: '架构与编排', children: [
+          { title: '生产级 Agent 架构全景', path: 'deep/agent-architecture' },
+          { title: 'Agent 工作流编排模式', path: 'deep/agent-workflow' },
+          { title: '多智能体架构与隔离', path: 'deep/multi-agent' }
+        ]
+      },
+      {
+        title: '真实架构案例', children: [
+          { title: '企业知识库助手架构', path: 'deep/case-kb-agent' },
+          { title: 'Text-to-SQL 智能体架构', path: 'deep/case-text2sql' },
+          { title: '可靠性、成本与评测门禁', path: 'deep/reliability-eval' }
+        ]
+      }
+    ]
   }
 ];

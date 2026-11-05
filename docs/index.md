@@ -64,6 +64,18 @@
 4. 每页结尾有**自测题**，能用自己的话答出来就往下走。
 5. 真要动手时去看官方文档 Quickstart —— 笔记负责建立地图，官方文档负责提供准确的最新 API。
 
+## 进阶阅读（选读）
+
+走完上面的初学者主线后，可以看「深入与架构」分类：把机制补深，并给出生产级智能体的真实架构分层与案例。仍然只有笔记与架构图，**没有可运行项目 demo**。
+
+| 想深入什么 | 入口 |
+| --- | --- |
+| 框架内部怎么跑 | [Spring AI 机制深入](#/deep/spring-ai-internals)、[Python 编排深入](#/deep/python-internals) |
+| 上下文为什么总是不够用 | [上下文工程深入](#/deep/context-engineering) |
+| 生产系统长什么样 | [生产级 Agent 架构全景](#/deep/agent-architecture)、[Agent 工作流编排模式](#/deep/agent-workflow) |
+| 真实架构案例 | [企业知识库助手](#/deep/case-kb-agent)、[Text-to-SQL 智能体](#/deep/case-text2sql) |
+| 上线怎么守住质量 | [可靠性、成本与评测门禁](#/deep/reliability-eval) |
+
 ## 阅读约定
 
 - **页首「核心要点」**：先看结论，再读原理。

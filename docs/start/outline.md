@@ -85,6 +85,25 @@ summary: 先给出整份笔记的完整大纲与四阶段学习路线，说明�
 | [Spring AI ↔ Python 概念映射](#/compare/mapping) | 同一个概念在两边叫什么，方便互相迁移 |
 | [选型与上线检查清单](#/compare/checklist) | 按团队与场景选型；上线前逐条检查 |
 
+### 5 · 深入与架构（进阶阅读，选读）
+
+初学主线走完 0～4 后再看。它不改变「先原理后框架」的顺序，只是把机制、参数与生产架构补深；依然**不含可运行项目 demo**。
+
+| 组 | 页面 | 深入什么 |
+| --- | --- | --- |
+| 机制深入 | [Spring AI 机制深入](#/deep/spring-ai-internals) | 请求生命周期、Advisor 环绕链、工具执行链、结构化输出转换、观测 |
+| | [Python 编排深入](#/deep/python-internals) | 循环内部、StateGraph 运行时、reducer、checkpointer、持久化执行引擎 |
+| | [上下文工程深入](#/deep/context-engineering) | 上下文预算、压缩策略、查询改写 / 混合检索 / 重排、prompt 缓存 |
+| 架构与编排 | [生产级 Agent 架构全景](#/deep/agent-architecture) | 接入层、编排层、模型网关、工具执行层、状态与存储、治理面的分层职责 |
+| | [Agent 工作流编排模式](#/deep/agent-workflow) | ReAct / Plan-Execute / 状态图 / 多智能体的取舍与混合模式 |
+| | [多智能体架构与隔离](#/deep/multi-agent) | supervisor / handoff 拓扑、上下文与权限隔离、成本放大与失败传播 |
+| 真实架构案例 | [企业知识库助手架构](#/deep/case-kb-agent) | 离线索引 + 在线问答 + 权限过滤 + 引用溯源 + 拒答 + 评测 |
+| | [Text-to-SQL 智能体架构](#/deep/case-text2sql) | Schema 检索、SQL 静态校验、只读执行、行数与超时限制、审计 |
+| | [可靠性、成本与评测门禁](#/deep/reliability-eval) | 失败分类、幂等与恢复、模型分级路由、离线评测与发布门禁 |
+
+> [!TIP] 怎么读这一层
+> 先读 [生产级 Agent 架构全景](#/deep/agent-architecture) 建立分层地图，再按自己用的栈挑机制页，最后看案例。案例的价值在于**看每层为什么存在**，不是抄组件清单。
+
 ## 三、总纲：先记住这五句
 
 1. **Agent = 大模型 + 工具 + 循环 + 状态**。模型负责「想」，工具负责「做」，循环负责「接着做」，状态负责「记得做过什么」。
