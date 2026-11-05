@@ -1,5 +1,6 @@
 // AI Agent 学习笔记目录
 // 顶层是「大分类」（显示为顶部标签），children 可无限嵌套；叶子节点 path 对应 docs/<path>.md
+// 顺序即学习路径：入门 → 原理 → 模型与提示词 → 上下文与知识 → 工具与协议 → 两条栈 → 工程化 → 深入架构 → 对照落地
 window.NAV = [
   {
     id: 'start', title: '从这里开始', desc: '先大纲，再详细；学习路线与术语速查',
@@ -30,6 +31,56 @@ window.NAV = [
       {
         title: '工程底线', children: [
           { title: '评测、可观测与安全边界', path: 'basic/eval-safety' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'llm', title: '模型与提示词', desc: 'LLM 原理、提示词设计、选型参数与输出护栏',
+    children: [
+      {
+        title: '认知基础', children: [
+          { title: '大模型怎么工作：token、预测与幻觉', path: 'llm/how-llm-works' },
+          { title: '提示词工程：从一句话到可复用的指令', path: 'llm/prompt-engineering' }
+        ]
+      },
+      {
+        title: '选型与控制', children: [
+          { title: '模型选型与关键参数', path: 'llm/model-selection' },
+          { title: '结构化输出与护栏', path: 'llm/structured-output-guardrails' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'knowledge', title: '上下文与知识', desc: '文档入库、向量检索、检索优化与记忆系统',
+    children: [
+      {
+        title: '知识入库', children: [
+          { title: '文档解析与切分策略', path: 'knowledge/document-pipeline' },
+          { title: 'embedding 与向量库', path: 'knowledge/embedding-vectorstore' }
+        ]
+      },
+      {
+        title: '检索与记忆', children: [
+          { title: '检索优化：改写、混合检索与重排', path: 'knowledge/retrieval-advanced' },
+          { title: '记忆系统：短期、长期与遗忘', path: 'knowledge/memory-systems' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'tools', title: '工具与协议', desc: '工具设计、MCP 协议深入、执行沙箱与外部集成',
+    children: [
+      {
+        title: '设计', children: [
+          { title: '工具设计原则：粒度、参数与错误语义', path: 'tools/tool-design' }
+        ]
+      },
+      {
+        title: '协议与执行', children: [
+          { title: 'MCP 协议深入：能力与传输', path: 'tools/mcp-deep' },
+          { title: '工具执行、沙箱与外部集成', path: 'tools/sandbox-integration' }
         ]
       }
     ]
@@ -78,16 +129,18 @@ window.NAV = [
     ]
   },
   {
-    id: 'compare', title: '对照与落地', desc: '两边概念映射、选型与上线检查',
+    id: 'engineering', title: '工程化', desc: '本地调试、测试、可观测、交付与运维',
     children: [
       {
-        title: '对照', children: [
-          { title: 'Spring AI ↔ Python 概念映射', path: 'compare/mapping' }
+        title: '开发期', children: [
+          { title: '本地开发与调试', path: 'engineering/local-dev-debug' },
+          { title: '测试策略：从单测到评测', path: 'engineering/testing' }
         ]
       },
       {
-        title: '落地', children: [
-          { title: '选型与上线检查清单', path: 'compare/checklist' }
+        title: '运行期', children: [
+          { title: '可观测性：链路、指标与成本归因', path: 'engineering/observability' },
+          { title: '交付与运维：配置、CI/CD 与灰度', path: 'engineering/delivery-ops' }
         ]
       }
     ]
@@ -113,7 +166,24 @@ window.NAV = [
         title: '真实架构案例', children: [
           { title: '企业知识库助手架构', path: 'deep/case-kb-agent' },
           { title: 'Text-to-SQL 智能体架构', path: 'deep/case-text2sql' },
+          { title: '代码助手架构', path: 'deep/case-code-agent' },
+          { title: '运维诊断智能体架构', path: 'deep/case-ops-agent' },
           { title: '可靠性、成本与评测门禁', path: 'deep/reliability-eval' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'compare', title: '对照与落地', desc: '两边概念映射、选型与上线检查',
+    children: [
+      {
+        title: '对照', children: [
+          { title: 'Spring AI ↔ Python 概念映射', path: 'compare/mapping' }
+        ]
+      },
+      {
+        title: '落地', children: [
+          { title: '选型与上线检查清单', path: 'compare/checklist' }
         ]
       }
     ]

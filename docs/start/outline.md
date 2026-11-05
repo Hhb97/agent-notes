@@ -104,6 +104,26 @@ summary: 先给出整份笔记的完整大纲与四阶段学习路线，说明�
 > [!TIP] 怎么读这一层
 > 先读 [生产级 Agent 架构全景](#/deep/agent-architecture) 建立分层地图，再按自己用的栈挑机制页，最后看案例。案例的价值在于**看每层为什么存在**，不是抄组件清单。
 
+### 6 · 完整知识体系（10 个分类）
+
+上面的 0～5 是**阅读顺序**，下面是知识库最终的**目录结构**。按「Agent 开发的六类难点」分层，而不是按框架名分层：模型会不会想、提示词说没说清、知识给没给对、工具设计得好不好、框架怎么编排、工程上能不能稳定上线。
+
+| 层 | 分类 | 页面数 | 核心页面 |
+| --- | --- | --- | --- |
+| 0 | 从这里开始 | 2 | [大纲与路线](#/start/outline)、[术语速查](#/start/glossary) |
+| 1 | Agent 基础 | 5 | [核心循环与工具调用](#/basic/loop)、[上下文、记忆与 RAG](#/basic/context-rag) |
+| 2 | 模型与提示词 | 4 | [大模型怎么工作](#/llm/how-llm-works)、[提示词工程](#/llm/prompt-engineering)、[模型选型与关键参数](#/llm/model-selection)、[结构化输出与护栏](#/llm/structured-output-guardrails) |
+| 3 | 上下文与知识 | 4 | [文档解析与切分策略](#/knowledge/document-pipeline)、[embedding 与向量库](#/knowledge/embedding-vectorstore)、[检索优化](#/knowledge/retrieval-advanced)、[记忆系统](#/knowledge/memory-systems) |
+| 4 | 工具与协议 | 3 | [工具设计原则](#/tools/tool-design)、[MCP 协议深入](#/tools/mcp-deep)、[工具执行、沙箱与外部集成](#/tools/sandbox-integration) |
+| 5 | Spring AI | 4 | [Spring AI 全景](#/springai/overview)、[ChatClient 与 Advisor](#/springai/chatclient) |
+| 6 | Python 生态 | 5 | [生态地图与选型](#/python/overview)、[最小 Agent 循环](#/python/minimal-loop)、[LangGraph](#/python/langgraph) |
+| 7 | 工程化 | 4 | [本地开发与调试](#/engineering/local-dev-debug)、[测试策略](#/engineering/testing)、[可观测性](#/engineering/observability)、[交付与运维](#/engineering/delivery-ops) |
+| 8 | 深入与架构 | 11 | [生产级 Agent 架构全景](#/deep/agent-architecture)、[工作流编排模式](#/deep/agent-workflow)、[代码助手架构](#/deep/case-code-agent)、[运维诊断智能体架构](#/deep/case-ops-agent) |
+| 9 | 对照与落地 | 2 | [Spring AI ↔ Python 概念映射](#/compare/mapping)、[选型与上线检查清单](#/compare/checklist) |
+
+> [!NOTE] 分层原则
+> **通用能力（2/3/4/7）与语言无关**，先建立这四层，再看具体栈（5/6）会轻松很多；架构（8）是把所有层串起来的视图，对照（9）是收尾工具。
+
 ## 三、总纲：先记住这五句
 
 1. **Agent = 大模型 + 工具 + 循环 + 状态**。模型负责「想」，工具负责「做」，循环负责「接着做」，状态负责「记得做过什么」。

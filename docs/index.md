@@ -44,11 +44,12 @@
 
 | 阶段 | 目标 | 从这里开始 |
 | --- | --- | --- |
-| 0 · 大纲 | 先看全局地图，知道要学什么、按什么顺序学 | [学习大纲与路线](#/start/outline)、[术语速查与准备](#/start/glossary) |
+| 0 · 地图 | 先看全局大纲，知道要学什么、按什么顺序学 | [学习大纲与路线](#/start/outline)、[术语速查与准备](#/start/glossary) |
 | 1 · 原理 | 不依赖任何框架，搞懂循环、工具、上下文、MCP | [Agent 是什么](#/basic/what-is-agent)、[核心循环与工具调用](#/basic/loop) |
-| 2 · Java 栈 | 已有 Spring Boot 基础，把 AI 接进现有服务 | [Spring AI 全景与分层抽象](#/springai/overview) |
-| 3 · Python 栈 | 从裸 SDK 起步，按复杂度选编排方式 | [生态地图与选型](#/python/overview)、[不用框架的最小 Agent 循环](#/python/minimal-loop) |
-| 4 · 对照落地 | 把两边概念对齐，知道上线前查什么 | [Spring AI ↔ Python 概念映射](#/compare/mapping)、[选型与上线检查清单](#/compare/checklist) |
+| 2 · 通用能力 | 补模型与提示词、知识检索、工具设计这三层语言无关的能力 | [大模型怎么工作](#/llm/how-llm-works)、[文档解析与切分策略](#/knowledge/document-pipeline)、[工具设计原则](#/tools/tool-design) |
+| 3 · 技术栈 | 挑一条栈深入：Java 走 Spring AI，Python 走最小循环 | [Spring AI 全景](#/springai/overview)、[生态地图与选型](#/python/overview) |
+| 4 · 工程化 | 把调试、测试、观测、交付补齐 | [本地开发与调试](#/engineering/local-dev-debug)、[测试策略](#/engineering/testing) |
+| 5 · 架构与落地 | 看真实架构，用映射表与检查清单收尾 | [生产级 Agent 架构全景](#/deep/agent-architecture)、[选型与上线检查清单](#/compare/checklist) |
 
 **总纲五句**：① Agent = 模型 + 工具 + 循环 + 状态；② 模型不执行代码，只发出工具调用请求；③ Spring AI 把它做成 Spring 风格抽象；④ Python 从一个 while 循环起步；⑤ 决定效果的是工具设计、上下文、评测与人工确认，不是框架。
 
@@ -56,13 +57,33 @@
 
 <div id="home-cats"></div>
 
+## 完整知识体系
+
+按「Agent 开发全生命周期」而不是按框架分目录：难点分散在模型、提示词、知识、工具、编排、工程六处，只学框架覆盖不到其余五处。
+
+| 层 | 分类 | 解决什么 | 入口 |
+| --- | --- | --- | --- |
+| 0 | 从这里开始 | 地图、路线、术语 | [学习大纲与路线](#/start/outline) |
+| 1 | Agent 基础 | 循环、工具、上下文、MCP、安全 | [Agent 是什么](#/basic/what-is-agent) |
+| 2 | 模型与提示词 | LLM 原理、提示词、选型、输出护栏 | [大模型怎么工作](#/llm/how-llm-works) |
+| 3 | 上下文与知识 | 文档入库、向量检索、检索优化、记忆 | [文档解析与切分策略](#/knowledge/document-pipeline) |
+| 4 | 工具与协议 | 工具设计、MCP 深入、沙箱与集成 | [工具设计原则](#/tools/tool-design) |
+| 5 | Spring AI | Java 栈的 AI 抽象 | [Spring AI 全景](#/springai/overview) |
+| 6 | Python 生态 | 最小循环、状态图、轻量框架 | [生态地图与选型](#/python/overview) |
+| 7 | 工程化 | 调试、测试、观测、交付运维 | [本地开发与调试](#/engineering/local-dev-debug) |
+| 8 | 深入与架构 | 机制、生产架构、真实案例 | [生产级 Agent 架构全景](#/deep/agent-architecture) |
+| 9 | 对照与落地 | 概念映射、选型与上线清单 | [概念映射](#/compare/mapping) |
+
+真实架构案例：[企业知识库助手](#/deep/case-kb-agent) · [Text-to-SQL 智能体](#/deep/case-text2sql) · [代码助手](#/deep/case-code-agent) · [运维诊断智能体](#/deep/case-ops-agent)。
+
 ## 学习路线
 
-1. **先读第 1 章原理**：把「模型不执行代码」「循环是谁写的」想清楚。跳过这步，后面看任何框架都像魔法。
-2. **再挑一条栈深入**：Java / Spring 背景走 Spring AI，Python 背景走 Python 生态。两章结构刻意对齐，方便对照。
-3. **读对照与落地**：理解「同一个概念在两边叫什么」，再做选型。
-4. 每页结尾有**自测题**，能用自己的话答出来就往下走。
-5. 真要动手时去看官方文档 Quickstart —— 笔记负责建立地图，官方文档负责提供准确的最新 API。
+1. **0 → 1 建立地图**：先看大纲与术语，再把「模型不执行代码」「循环是谁写的」想清楚。跳过这步，后面看任何框架都像魔法。
+2. **2 补通用能力**：模型与提示词、上下文与知识、工具与协议三层与语言无关，先学这三层，后面看具体栈会轻松很多。
+3. **3 挑一条栈深入**：Java / Spring 背景走 Spring AI，Python 背景走 Python 生态。两章结构刻意对齐，方便对照。
+4. **4 工程化**：调试、测试、可观测、交付运维，把「能跑」变成「能上线」。
+5. **5 → 6 架构与落地**：读真实架构案例，再用映射表与上线检查清单收尾。每页结尾有自测题，能用自己的话答出来就往下走。
+6. 真要动手时去看官方文档 Quickstart —— 笔记负责建立地图，官方文档负责提供准确的最新 API。
 
 ## 进阶阅读（选读）
 
