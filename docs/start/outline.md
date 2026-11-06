@@ -1,7 +1,7 @@
 ---
 level: 基础
 tags: [学习路线, 大纲, 入门, Agent, Spring AI, Python, 架构]
-summary: 整份笔记的完整大纲与阅读路线：五层结构、12 个分类、56 篇笔记各自解决什么问题，以及初学者最该先建立的五个基本判断。
+summary: 整份笔记的完整大纲与阅读路线：五层结构、13 个分类、63 篇笔记各自解决什么问题，以及初学者最该先建立的五个基本判断。
 ---
 
 # 学习大纲与路线
@@ -46,7 +46,7 @@ summary: 整份笔记的完整大纲与阅读路线：五层结构、12 个分�
 
 ## 二、完整大纲
 
-下表就是全站结构：**12 个分类、56 篇**。标 ★ 的适合作为入口。
+下表就是全站结构：**13 个分类、63 篇**。标 ★ 的适合作为入口。
 
 ### 0 · 从这里开始（2 篇）
 
@@ -110,7 +110,19 @@ summary: 整份笔记的完整大纲与阅读路线：五层结构、12 个分�
 | [轻量框架：Pydantic AI 与 OpenAI Agents SDK](#/python/frameworks) | 类型安全、handoff、guardrail |
 | [结构化输出、检索与评测](#/python/output-rag-eval) | 三类工程能力的最小落地 |
 
-### 7 · 工程化（5 篇）
+### 7 · 阿里与国产生态（7 篇）
+
+| 页面 | 解决什么问题 |
+| --- | --- |
+| [阿里 AI 生态全景与两条技术路线](#/alibaba/overview) ★ | 四层结构、SAA 与 AgentScope 怎么选 |
+| [Spring AI Alibaba：Agent Framework 与 Graph](#/alibaba/spring-ai-alibaba) ★ | ReactAgent、Hooks、Agent Skills、Graph 编排 |
+| [AgentScope：Actor 多智能体与 Runtime](#/alibaba/agentscope) ★ | Actor 范式、MsgHub、Meta Tool、沙箱部署 |
+| [百炼与 DashScope：模型服务与知识库](#/alibaba/bailian-dashscope) | 两种端点、关键参数、配额与计费 |
+| [Higress：AI 网关与 MCP 托管](#/alibaba/higress-gateway) | 多模型路由、token 限流、语义缓存风险 |
+| [国产模型与云平台对照选型](#/alibaba/domestic-stack) | 工具调用实测法、平台对照、迁移清单 |
+| [国内合规：备案、内容安全与数据边界](#/alibaba/compliance) | 三条合规线、五道闸门、上线检查表 |
+
+### 8 · 工程化（5 篇）
 
 | 页面 | 解决什么问题 |
 | --- | --- |
@@ -120,7 +132,7 @@ summary: 整份笔记的完整大纲与阅读路线：五层结构、12 个分�
 | [交付与运维：配置、CI/CD 与灰度](#/engineering/delivery-ops) | 版本化、灰度、回滚与值班 |
 | [安全与合规：注入、越权与数据边界](#/engineering/security-hardening) | 纵深防御与上线安全检查表 |
 
-### 8 · 机制深入（5 篇）
+### 9 · 机制深入（5 篇）
 
 | 页面 | 深入什么 |
 | --- | --- |
@@ -130,7 +142,7 @@ summary: 整份笔记的完整大纲与阅读路线：五层结构、12 个分�
 | [状态持久化与恢复语义](#/internals/durability) | 日志 / 快照 / 事件溯源与恢复算法 |
 | [评测系统深入：数据集、裁判与指标漂移](#/internals/eval-system) | 五层评测平台与裁判校准 |
 
-### 9 · 架构与案例（11 篇）
+### 10 · 架构与案例（11 篇）
 
 | 组 | 页面 | 讲什么 |
 | --- | --- | --- |
@@ -146,7 +158,7 @@ summary: 整份笔记的完整大纲与阅读路线：五层结构、12 个分�
 | | [运维诊断智能体架构](#/deep/case-ops-agent) | 证据链、假设验证、动作分级 |
 | | [可靠性、成本与评测门禁](#/deep/reliability-eval) | 失败分类、成本抓手、发布门禁 |
 
-### 10 · 落地架构（6 篇）
+### 11 · 落地架构（6 篇）
 
 | 页面 | 交付什么 |
 | --- | --- |
@@ -157,7 +169,7 @@ summary: 整份笔记的完整大纲与阅读路线：五层结构、12 个分�
 | [长任务研究 Agent 项目架构](#/blueprint/research-agent) | 子任务隔离、证据库、检查点续跑 |
 | [从 MVP 到生产：落地路线与验收清单](#/blueprint/delivery-roadmap) | 五阶段退出条件与总验收清单 |
 
-### 11 · 对照与选型（2 篇）
+### 12 · 对照与选型（2 篇）
 
 | 页面 | 解决什么问题 |
 | --- | --- |

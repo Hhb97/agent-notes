@@ -36,7 +36,7 @@
 | 0 · 地图 | 先看全局大纲，知道要学什么、按什么顺序学 | [学习大纲与路线](#/start/outline)、[术语速查与准备](#/start/glossary) |
 | 1 · 原理 | 不依赖任何框架，搞懂循环、工具、上下文、MCP | [Agent 是什么](#/basic/what-is-agent)、[核心循环与工具调用](#/basic/loop) |
 | 2 · 通用能力 | 补模型与提示词、上下文与知识、工具与协议三块 | [大模型怎么工作](#/llm/how-llm-works)、[文档解析与切分策略](#/knowledge/document-pipeline)、[工具设计原则](#/tools/tool-design) |
-| 3 · 技术栈 | 挑一条栈深入：Java 走 Spring AI，Python 从最小循环起步 | [Spring AI 全景](#/springai/overview)、[生态地图与选型](#/python/overview) |
+| 3 · 技术栈 | 挑一条栈深入：Java 走 Spring AI，Python 从最小循环起步；国产化看阿里生态 | [Spring AI 全景](#/springai/overview)、[生态地图与选型](#/python/overview)、[阿里 AI 生态全景](#/alibaba/overview) |
 | 4 · 工程化 | 调试、测试、可观测、安全、交付运维 | [本地开发与调试](#/engineering/local-dev-debug)、[安全与合规](#/engineering/security-hardening) |
 | 5 · 架构落地 | 看内部机制与生产架构，再照蓝图搭项目 | [循环的状态机本质](#/internals/loop-state-machine)、[通用 Agent 平台参考架构](#/blueprint/reference) |
 

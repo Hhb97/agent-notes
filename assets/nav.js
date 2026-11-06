@@ -129,6 +129,34 @@ window.NAV = [
     ]
   },
   {
+    id: 'alibaba', title: '阿里与国产生态', desc: 'Spring AI Alibaba、AgentScope、百炼、Higress 与国产选型合规',
+    children: [
+      {
+        title: '生态与选型', children: [
+          { title: '阿里 AI 生态全景与两条技术路线', path: 'alibaba/overview' },
+          { title: '国产模型与云平台对照选型', path: 'alibaba/domestic-stack' }
+        ]
+      },
+      {
+        title: 'Java 侧框架', children: [
+          { title: 'Spring AI Alibaba：Agent Framework 与 Graph', path: 'alibaba/spring-ai-alibaba' }
+        ]
+      },
+      {
+        title: 'Python 侧框架', children: [
+          { title: 'AgentScope：Actor 多智能体与 Runtime', path: 'alibaba/agentscope' }
+        ]
+      },
+      {
+        title: '平台与基础设施', children: [
+          { title: '百炼与 DashScope：模型服务与知识库', path: 'alibaba/bailian-dashscope' },
+          { title: 'Higress：AI 网关与 MCP 托管', path: 'alibaba/higress-gateway' },
+          { title: '国内合规：备案、内容安全与数据边界', path: 'alibaba/compliance' }
+        ]
+      }
+    ]
+  },
+  {
     id: 'engineering', title: '工程化', desc: '本地调试、测试、可观测、安全与交付运维',
     children: [
       {

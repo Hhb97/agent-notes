@@ -50,7 +50,7 @@
   var TAB_GROUPS = [
     { title: '入门与原理', ids: ['start', 'basic', 'llm'] },
     { title: '知识与工具', ids: ['knowledge', 'tools'] },
-    { title: '技术栈', ids: ['springai', 'python'] },
+    { title: '技术栈', ids: ['springai', 'python', 'alibaba'] },
     { title: '工程与机制', ids: ['engineering', 'internals'] },
     { title: '架构与落地', ids: ['deep', 'blueprint', 'compare'] }
   ];
