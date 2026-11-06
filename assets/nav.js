@@ -146,6 +146,47 @@ window.NAV = [
     ]
   },
   {
+    id: 'internals', title: '机制深入', desc: '进阶：循环、上下文、工具、持久化与评测的内部机制',
+    children: [
+      {
+        title: '运行时机制', children: [
+          { title: 'Agent 循环的状态机本质与并发模型', path: 'internals/loop-state-machine' },
+          { title: '上下文编译器：从状态到提示词的完整算法', path: 'internals/context-compiler' },
+          { title: '工具运行时深入：schema、分发、幂等与重试', path: 'internals/tool-runtime' }
+        ]
+      },
+      {
+        title: '可靠性与评测', children: [
+          { title: '状态持久化与恢复语义', path: 'internals/durability' },
+          { title: '评测系统深入：数据集、裁判与指标漂移', path: 'internals/eval-system' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'blueprint', title: '落地架构', desc: '可落地项目架构讲解：分层、契约、数据模型、部署与实施路线',
+    children: [
+      {
+        title: '方法与参考架构', children: [
+          { title: '从需求到可落地架构：分层、契约与决策记录', path: 'blueprint/method' },
+          { title: '通用 Agent 平台参考架构（可落地版）', path: 'blueprint/reference' }
+        ]
+      },
+      {
+        title: '项目架构讲解', children: [
+          { title: '智能客服 Agent 项目架构', path: 'blueprint/service-agent' },
+          { title: '数据分析 Agent 项目架构', path: 'blueprint/analytics-agent' },
+          { title: '长任务研究 Agent 项目架构', path: 'blueprint/research-agent' }
+        ]
+      },
+      {
+        title: '实施', children: [
+          { title: '从 MVP 到生产：落地路线与验收清单', path: 'blueprint/delivery-roadmap' }
+        ]
+      }
+    ]
+  },
+  {
     id: 'deep', title: '深入与架构', desc: '进阶阅读：机制原理、生产级架构与真实案例',
     children: [
       {

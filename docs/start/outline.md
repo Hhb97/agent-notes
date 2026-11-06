@@ -104,7 +104,7 @@ summary: 先给出整份笔记的完整大纲与四阶段学习路线，说明�
 > [!TIP] 怎么读这一层
 > 先读 [生产级 Agent 架构全景](#/deep/agent-architecture) 建立分层地图，再按自己用的栈挑机制页，最后看案例。案例的价值在于**看每层为什么存在**，不是抄组件清单。
 
-### 6 · 完整知识体系（10 个分类）
+### 6 · 完整知识体系（12 个分类 / 55 篇）
 
 上面的 0～5 是**阅读顺序**，下面是知识库最终的**目录结构**。按「Agent 开发的六类难点」分层，而不是按框架名分层：模型会不会想、提示词说没说清、知识给没给对、工具设计得好不好、框架怎么编排、工程上能不能稳定上线。
 
@@ -112,17 +112,22 @@ summary: 先给出整份笔记的完整大纲与四阶段学习路线，说明�
 | --- | --- | --- | --- |
 | 0 | 从这里开始 | 2 | [大纲与路线](#/start/outline)、[术语速查](#/start/glossary) |
 | 1 | Agent 基础 | 5 | [核心循环与工具调用](#/basic/loop)、[上下文、记忆与 RAG](#/basic/context-rag) |
-| 2 | 模型与提示词 | 4 | [大模型怎么工作](#/llm/how-llm-works)、[提示词工程](#/llm/prompt-engineering)、[模型选型与关键参数](#/llm/model-selection)、[结构化输出与护栏](#/llm/structured-output-guardrails) |
-| 3 | 上下文与知识 | 4 | [文档解析与切分策略](#/knowledge/document-pipeline)、[embedding 与向量库](#/knowledge/embedding-vectorstore)、[检索优化](#/knowledge/retrieval-advanced)、[记忆系统](#/knowledge/memory-systems) |
-| 4 | 工具与协议 | 3 | [工具设计原则](#/tools/tool-design)、[MCP 协议深入](#/tools/mcp-deep)、[工具执行、沙箱与外部集成](#/tools/sandbox-integration) |
+| 2 | 模型与提示词 | 4 | [大模型怎么工作](#/llm/how-llm-works)、[提示词工程](#/llm/prompt-engineering) |
+| 3 | 上下文与知识 | 4 | [文档解析与切分策略](#/knowledge/document-pipeline)、[检索优化](#/knowledge/retrieval-advanced) |
+| 4 | 工具与协议 | 3 | [工具设计原则](#/tools/tool-design)、[MCP 协议深入](#/tools/mcp-deep) |
 | 5 | Spring AI | 4 | [Spring AI 全景](#/springai/overview)、[ChatClient 与 Advisor](#/springai/chatclient) |
-| 6 | Python 生态 | 5 | [生态地图与选型](#/python/overview)、[最小 Agent 循环](#/python/minimal-loop)、[LangGraph](#/python/langgraph) |
-| 7 | 工程化 | 4 | [本地开发与调试](#/engineering/local-dev-debug)、[测试策略](#/engineering/testing)、[可观测性](#/engineering/observability)、[交付与运维](#/engineering/delivery-ops) |
-| 8 | 深入与架构 | 11 | [生产级 Agent 架构全景](#/deep/agent-architecture)、[工作流编排模式](#/deep/agent-workflow)、[代码助手架构](#/deep/case-code-agent)、[运维诊断智能体架构](#/deep/case-ops-agent) |
-| 9 | 对照与落地 | 2 | [Spring AI ↔ Python 概念映射](#/compare/mapping)、[选型与上线检查清单](#/compare/checklist) |
+| 6 | Python 生态 | 5 | [生态地图与选型](#/python/overview)、[LangGraph](#/python/langgraph) |
+| 7 | 工程化 | 4 | [测试策略](#/engineering/testing)、[可观测性](#/engineering/observability) |
+| 8 | **机制深入** | 5 | [循环的状态机本质](#/internals/loop-state-machine)、[上下文编译器](#/internals/context-compiler)、[工具运行时](#/internals/tool-runtime)、[状态持久化与恢复语义](#/internals/durability)、[评测系统深入](#/internals/eval-system) |
+| 9 | **落地架构** | 6 | [从需求到可落地架构](#/blueprint/method)、[通用 Agent 平台参考架构](#/blueprint/reference)、[智能客服](#/blueprint/service-agent)、[数据分析](#/blueprint/analytics-agent)、[长任务研究](#/blueprint/research-agent)、[MVP→生产路线](#/blueprint/delivery-roadmap) |
+| 10 | 深入与架构 | 11 | [生产级 Agent 架构全景](#/deep/agent-architecture)、[代码助手架构](#/deep/case-code-agent)、[运维诊断智能体](#/deep/case-ops-agent) |
+| 11 | 对照与落地 | 2 | [Spring AI ↔ Python 概念映射](#/compare/mapping)、[选型与上线检查清单](#/compare/checklist) |
 
 > [!NOTE] 分层原则
-> **通用能力（2/3/4/7）与语言无关**，先建立这四层，再看具体栈（5/6）会轻松很多；架构（8）是把所有层串起来的视图，对照（9）是收尾工具。
+> **通用能力（2/3/4/7）与语言无关**，先建立这四层再看具体栈（5/6）。**第 8 层回答「内部到底怎么实现」**（状态机、上下文编译、工具分发、恢复语义、评测），**第 9 层回答「照着怎么把项目搭起来」**（工程目录、数据模型、接口契约、部署容量、实施与验收）。第 10 层是架构案例，第 11 层是收尾工具。
+
+> [!TIP] 想直接落地
+> 从 [通用 Agent 平台参考架构](#/blueprint/reference) 开始，它给出完整的组件清单、接口契约、数据模型与部署拓扑；再按项目类型跳到客服 / 数据分析 / 长任务研究三篇，最后用 [落地路线与验收清单](#/blueprint/delivery-roadmap) 排期。
 
 ## 三、总纲：先记住这五句
 

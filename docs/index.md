@@ -71,9 +71,13 @@
 | 5 | Spring AI | Java 栈的 AI 抽象 | [Spring AI 全景](#/springai/overview) |
 | 6 | Python 生态 | 最小循环、状态图、轻量框架 | [生态地图与选型](#/python/overview) |
 | 7 | 工程化 | 调试、测试、观测、交付运维 | [本地开发与调试](#/engineering/local-dev-debug) |
-| 8 | 深入与架构 | 机制、生产架构、真实案例 | [生产级 Agent 架构全景](#/deep/agent-architecture) |
-| 9 | 对照与落地 | 概念映射、选型与上线清单 | [概念映射](#/compare/mapping) |
+| 8 | **机制深入** | 循环状态机、上下文编译、工具运行时、恢复语义、评测 | [循环的状态机本质](#/internals/loop-state-machine) |
+| 9 | **落地架构** | 分层、契约、数据模型、部署容量、实施与验收 | [通用 Agent 平台参考架构](#/blueprint/reference) |
+| 10 | 深入与架构 | 机制、生产架构、真实案例 | [生产级 Agent 架构全景](#/deep/agent-architecture) |
+| 11 | 对照与落地 | 概念映射、选型与上线清单 | [概念映射](#/compare/mapping) |
 
+**想深入原理**：[上下文编译器](#/internals/context-compiler) · [工具运行时](#/internals/tool-runtime) · [状态持久化与恢复语义](#/internals/durability) · [评测系统深入](#/internals/eval-system)。
+**想照着搭项目**：[从需求到可落地架构](#/blueprint/method) · [智能客服](#/blueprint/service-agent) · [数据分析](#/blueprint/analytics-agent) · [长任务研究](#/blueprint/research-agent) · [落地路线与验收](#/blueprint/delivery-roadmap)。
 真实架构案例：[企业知识库助手](#/deep/case-kb-agent) · [Text-to-SQL 智能体](#/deep/case-text2sql) · [代码助手](#/deep/case-code-agent) · [运维诊断智能体](#/deep/case-ops-agent)。
 
 ## 学习路线
