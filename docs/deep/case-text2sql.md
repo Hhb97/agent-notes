@@ -1,16 +1,20 @@
 ---
 level: 深入
 tags: [真实架构案例, Text-to-SQL, 语义层, Schema 检索, 静态校验, 只读执行, 审计]
-summary: 以 Text-to-SQL 智能体为例，拆解从自然语言到安全查询的完整链路：Schema 检索、SQL 生成、静态校验、只读执行与结果解释，并说明权限、行数与超时限制、自纠正循环和审计设计。
+summary: 用最小可运行规模讲透 Text-to-SQL 的安全闭环：Schema 检索、SQL 生成、AST 静态校验、只读执行与结果解释，以及权限、行数、超时限制、有限次自纠正与审计。
 ---
 
-# Text-to-SQL 智能体架构
+# Text-to-SQL 智能体：最小安全闭环
 
 > [!ABSTRACT] 一句话版本
 > - Text-to-SQL 的风险不在「SQL 写得好不好」，而在**能不能保证它只做只读、只查有权数据、不会把库拖垮**。
 > - 完整链路：**意图与权限 → Schema 检索 → SQL 生成 → 静态校验（AST 级）→ 只读执行 → 结果校验与解释 → 审计**。
 > - 三道硬闸：**只读账号 / 白名单表与字段**、**静态校验禁止写与危险函数**、**行数与超时 / 成本上限**。
 > - 自纠正循环要有上限：执行报错可以回填让模型改一次，但不能无限重试，更不能把生产库错误信息直接暴露给用户。
+
+> [!NOTE] 这页和「数据分析 Agent 项目架构」的分工
+> 本页只讲**安全闭环本身**：一条链路、四道闸、有限次自纠正，读完能判断「我的实现有没有漏闸」。
+> 真要排期实施（语义层治理、异步大查询、结果缓存、图表、容量与验收）看 [数据分析 Agent 项目架构](#/blueprint/analytics-agent)。
 
 ## 一、场景与风险
 
@@ -43,7 +47,7 @@ summary: 以 Text-to-SQL 智能体为例，拆解从自然语言到安全查询�
 <text class="t" x="380" y="130" text-anchor="middle" dominant-baseline="middle">静态校验：只允许 SELECT · 表/字段白名单 · 强制权限谓词 · 禁止多语句与危险函数</text>
 <text class="ts" x="380" y="152" text-anchor="middle">执行层：只读账号 · LIMIT · 语句超时 · 扫描行数上限 · 结果大小上限</text>
 <rect class="b3" x="180" y="190" width="400" height="46" rx="10"/>
-<text class="t" x="380" y="213" text-anchor="middle" dominant-baseline="middle">有限次自纠正：执行报错 → 精简错误信息回填 → 重新生成（最多 N 次）</text>
+<text class="t" x="380" y="213" text-anchor="middle" dominant-baseline="middle">有限次自纠正：报错 → 精简信息回填 → 重新生成（最多 N 次）</text>
 <line class="ld" x1="589" y1="82" x2="589" y2="190"/>
 <line class="la" x1="580" y1="190" x2="327" y2="82" marker-end="url(#arr-a)"/>
 <text class="ts" x="640" y="180" text-anchor="middle">N 次仍失败 → 转人工 / 明确报错</text>
@@ -109,7 +113,7 @@ summary: 以 Text-to-SQL 智能体为例，拆解从自然语言到安全查询�
 6. **把原始数据库错误返回用户**：泄漏表结构与内部信息。
 7. **没维护语义层**：口径不清导致「SQL 对但数字错」。
 
-## 深入追问
+## 自测题
 
 > [!QUESTION] 为什么静态校验要用解析器（AST）而不是字符串匹配？
 > 字符串规则容易被注释、大小写、嵌套子查询或函数绕过；解析成语法树后才能可靠判断语句类型、涉及的表与字段、是否含写操作或危险函数。

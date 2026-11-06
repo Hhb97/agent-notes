@@ -34,9 +34,12 @@ summary: 一句话说明本页解决什么问题（显示在标题下方）
 ```
 
 - 只允许一个 `#` 标题；正文用 `##` / `###`（右侧大纲取 h2/h3）。
-- front matter 必须是文件的第一行开始，三个 `-` 包围，字段只用 `level` / `tags` / `summary`。
+- front matter 必须是文件的第一行开始，三个 `-` 包围，字段只用 `level` / `tags` / `summary`，且三个都必填。
+- `level` 只能取 `基础` / `进阶` / `深入`：基础=概念与用法，进阶=选型与工程细节，深入=机制、架构与落地。
 - **H1 必须与 `assets/nav.js` 中的 `title` 完全一致**，`tools/check.py` 会校验。
+- 页尾必须同时有 `## 常见坑` 与 `## 自测题`（至少 3 个 `[!QUESTION]`），每页至少 1 张 SVG 图解。
 - 每个概念尽量配一个**类比**（如 Advisor ≈ AOP 环绕增强、MCP ≈ USB-C），初学者靠类比建立直觉。
+- **与相邻页面重叠时，在页首加一条 `[!NOTE] 分工` 说明**：本页讲哪一层、另一页讲哪一层，避免读者重复读两遍。
 
 ## 2. 提示块（GitHub 风格 alert）
 
@@ -126,4 +129,6 @@ python tools/build_index.py
 python tools/check.py
 ```
 
-`check.py` 会校验：导航登记的页面是否都有 `.md`、front matter、单一 H1 且与导航标题一致、SVG 规范、站内链接有效性、孤儿页面、搜索索引是否最新。GitHub Actions 在每次 push 时自动跑同一套检查。
+`check.py` 会校验：导航登记的页面是否都有 `.md`、front matter 三个字段与 `level` 取值、单一 H1 且与导航标题一致、SVG 规范与图解数量、常见坑 / 自测题结构、站内链接有效性、孤儿页面、**`app.js` 的 `TAB_GROUPS` 是否覆盖全部分类**、搜索索引是否最新。GitHub Actions 在每次 push 时自动跑同一套检查。
+
+新增页面时三步都不能漏：写 `.md` → 在 `assets/nav.js` 登记 → 确认该分类已被 `assets/app.js` 的 `TAB_GROUPS` 挂到某个顶部标签。漏了最后一步，页面能被搜到但顶栏点不进去，`check.py` 会报错。

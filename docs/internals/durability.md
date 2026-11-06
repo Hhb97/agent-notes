@@ -125,7 +125,7 @@ Idempotency(key PK, run_id, step, tool_call_id, params_hash,
 5. **事件 schema 随意改**：旧 run 无法重放。
 6. **审批只实现批准路径**：拒绝 / 超时让任务永久挂起。
 
-## 深入追问
+## 自测题
 
 > [!QUESTION] 为什么「恰好一次」是组合出来的？
 > 分布式下只能做到 at-most-once 或 at-least-once；用至少一次投递 + 幂等去重 + 乐观锁，才能让外部观察到的效果等同于恰好一次。

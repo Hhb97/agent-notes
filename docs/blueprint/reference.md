@@ -12,6 +12,10 @@ summary: 一份可以直接照着排期的通用 Agent 平台参考架构：完�
 > - 状态层是核心资产：`Run / Event / Checkpoint / Idempotency / Audit / ToolRegistry / Quota` 七张表支撑恢复、去重、审计、配额与回放。
 > - 部署上把**接入编排（无状态）** 与 **worker（长任务）** 分开扩容，模型网关独立，存储与队列共享；多租户隔离落到每一行数据的 `tenant_id`。
 
+> [!NOTE] 这页和「生产级 Agent 架构全景」的分工
+> 全景页讲**为什么这样分层、故障怎么降级**（[生产级 Agent 架构全景](#/deep/agent-architecture)）；
+> 本页讲**照着怎么搭**：组件清单与必需性、工程模块目录、接口与事件契约、表结构、部署拓扑与容量估算、实施与验收。
+
 ## 一、逻辑架构
 
 <figure class="fig">
@@ -34,7 +38,7 @@ summary: 一份可以直接照着排期的通用 Agent 平台参考架构：完�
 <rect class="b3" x="406" y="188" width="178" height="44" rx="7"/><text class="ts" x="495" y="210" text-anchor="middle" dominant-baseline="middle">检索流水线（过滤/重排）</text>
 <rect class="bg" x="20" y="254" width="580" height="58" rx="10"/>
 <text class="tb" x="34" y="274">状态层</text>
-<rect class="b5" x="110" y="264" width="140" height="38" rx="7"/><text class="ts" x="180" y="283" text-anchor="middle" dominant-baseline="middle">Run / Event / Checkpoint</text>
+<rect class="b5" x="110" y="264" width="140" height="38" rx="7"/><text class="ts" x="180" y="283" text-anchor="middle" dominant-baseline="middle">Run/Event/Checkpoint</text>
 <rect class="b5" x="258" y="264" width="140" height="38" rx="7"/><text class="ts" x="328" y="283" text-anchor="middle" dominant-baseline="middle">向量库 / 对象存储</text>
 <rect class="b5" x="406" y="264" width="178" height="38" rx="7"/><text class="ts" x="495" y="283" text-anchor="middle" dominant-baseline="middle">幂等表 / 审计 / 评测数据</text>
 <line class="l" x1="310" y1="78" x2="310" y2="88" marker-end="url(#arr)"/>
@@ -218,7 +222,15 @@ Artifact(artifact_id PK, run_id, kind, uri, checksum, created_at)
 
 **验收清单**：契约文件与 ADR 齐全 · 七张表结构与索引评审通过 · 同步 / 异步链路各有一条可回放的 run · 故障注入（模型超时 / 工具失败 / 进程重启 / 审批拒绝）逐项通过 · 安全反例 0 例外 · 成本与 P95 符合 SLO · 灰度与回滚演练通过。
 
-## 深入追问
+## 常见坑
+
+1. **一次把五个层全上齐**：没有真实用例就引入队列、多租户、审计，最后 80% 组件空转；按 P0～P4 分期。
+2. **状态层当成业务库用**：把业务数据塞进 `Run` 表，回放与清理都变成灾难；业务数据留在业务库，状态层只存运行所需。
+3. **多租户只在网关判断**：网关之后任何一条 SQL、缓存键、对象存储路径漏了 `tenant_id` 就是越权。
+4. **长任务跑在同步链路上**：用同一套超时模型，结果要么超时要么连接被占满；异步链路必须有独立 worker 与取消语义。
+5. **契约里没有幂等键与预算字段**：上线后补，等于要求所有调用方改接口。
+
+## 自测题
 
 > [!QUESTION] 为什么能力层与状态层要最先定契约？
 > 它们决定编排能否暂停恢复、工具能否并行与幂等、评测能否复现；契约稳定后各模块可并行实现，后续换模型或换向量库也不必改业务层。

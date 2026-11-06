@@ -12,6 +12,11 @@ summary: 把 Agent 上线后的工程质量拆成三块：失败分类与幂等�
 > - **评测要成为发布门禁**：固定用例集（含安全反例）→ 自动跑 → 对比基线 → 越权类指标一票否决 → 灰度 → 线上抽检。
 > - 最重要的是把三者串起来：**没有评测，任何「优化」都无法证明是变好**。
 
+> [!NOTE] 评测相关的三页怎么分工
+> 本页是**上线视角**：失败怎么分类、成本怎么控、评测怎么当发布门禁用。
+> 评测系统本身怎么搭（数据集分层、裁判偏差与校准、指标漂移）看 [评测系统深入](#/internals/eval-system)；
+> 工程上怎么组织测试与 mock 看 [测试策略](#/engineering/testing)。
+
 ## 一、失败分类与处理矩阵
 
 | 失败类型 | 例子 | 是否重试 | 处理 |
@@ -58,7 +63,7 @@ summary: 把 Agent 上线后的工程质量拆成三块：失败分类与幂等�
 
 <figure class="fig">
 <svg viewBox="0 0 760 250" class="dg" role="img" aria-label="Agent 发布门禁流程：改动触发固定用例集、对比基线、安全指标一票否决、灰度发布与线上抽检回流用例集">
-<rect class="b1" x="20" y="40" width="120" height="44" rx="9"/><text class="ts" x="80" y="62" text-anchor="middle" dominant-baseline="middle">改动提示词 / 模型 / 工具</text>
+<rect class="b1" x="20" y="40" width="120" height="44" rx="9"/><text class="ts" x="80" y="62" text-anchor="middle" dominant-baseline="middle">提示词 / 模型 / 工具</text>
 <rect class="b2" x="160" y="40" width="120" height="44" rx="9"/><text class="ts" x="220" y="62" text-anchor="middle" dominant-baseline="middle">固定用例集自动跑</text>
 <rect class="b3" x="300" y="40" width="120" height="44" rx="9"/><text class="ts" x="360" y="62" text-anchor="middle" dominant-baseline="middle">对比基线指标</text>
 <rect class="b4" x="440" y="40" width="120" height="44" rx="9"/><text class="ts" x="500" y="62" text-anchor="middle" dominant-baseline="middle">安全指标一票否决</text>
@@ -111,7 +116,7 @@ summary: 把 Agent 上线后的工程质量拆成三块：失败分类与幂等�
 6. **线上坏例不回流**：同类问题反复出现。
 7. **SLO 只看平均延迟**：长尾与长任务被平均值掩盖。
 
-## 深入追问
+## 自测题
 
 > [!QUESTION] 为什么重试前必须先做错误分类和幂等？
 > 因为权限拒绝、校验拦截这类错误重试没有意义，还会放大风险；而写操作若不幂等，一次超时重试就会产生重复副作用。

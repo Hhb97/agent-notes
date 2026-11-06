@@ -41,7 +41,7 @@ export LLM_API_KEY="sk-..."        # Windows PowerShell: $env:LLM_API_KEY = "sk-
 
 <figure class="fig">
 <svg viewBox="0 0 760 210" class="dg" role="img" aria-label="Agent 调试决策流程：现象出现后依次检查实际请求、工具清单、每轮状态与最小复现用例">
-<rect class="b1" x="20" y="70" width="120" height="46" rx="9"/><text class="ts" x="80" y="93" text-anchor="middle" dominant-baseline="middle">现象：答非所问 / 没调工具</text>
+<rect class="b1" x="20" y="70" width="120" height="46" rx="9"/><text class="ts" x="80" y="93" text-anchor="middle" dominant-baseline="middle">答非所问 / 没调工具</text>
 <rect class="b2" x="160" y="70" width="120" height="46" rx="9"/><text class="ts" x="220" y="93" text-anchor="middle" dominant-baseline="middle">① 打印实际请求</text>
 <rect class="b3" x="300" y="70" width="120" height="46" rx="9"/><text class="ts" x="360" y="93" text-anchor="middle" dominant-baseline="middle">② 打印工具清单</text>
 <rect class="b4" x="440" y="70" width="120" height="46" rx="9"/><text class="ts" x="500" y="93" text-anchor="middle" dominant-baseline="middle">③ 记录每一轮</text>

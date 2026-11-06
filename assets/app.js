@@ -4,7 +4,7 @@
   var NAV = window.NAV;
   var $ = function (id) { return document.getElementById(id); };
   var content = $('content'), navEl = $('nav'), tocEl = $('toc'), docHead = $('docHead');
-  var SITE = 'Java 后端工程师笔记';
+  var SITE = 'AI Agent 学习笔记';
 
   var cache = {};           // path -> 原始 markdown
   var pages = [];           // 扁平化文章 {title, path, cat, trail}
@@ -46,13 +46,13 @@
   };
 
   /* ================= 顶部分类 & 侧边栏 ================= */
+  // 顶部只放 5 个学习阶段标签，每个标签下挂 2～4 个分类；分类名与 id 见 assets/nav.js
   var TAB_GROUPS = [
-    { title: 'Java 与框架', ids: ['java', 'spring', 'cs'] },
-    { title: '数据存储', ids: ['mysql', 'pg', 'redis', 'db', 'bigdata'] },
-    { title: '中间件与物联网', ids: ['mw', 'iot'] },
-    { title: '分布式与架构', ids: ['distributed', 'design'] },
-    { title: '运维与安全', ids: ['infra', 'security'] },
-    { title: 'AI 与数学', ids: ['ai', 'aimodel', 'math'] }
+    { title: '入门与原理', ids: ['start', 'basic', 'llm'] },
+    { title: '知识与工具', ids: ['knowledge', 'tools'] },
+    { title: '技术栈', ids: ['springai', 'python'] },
+    { title: '工程与机制', ids: ['engineering', 'internals'] },
+    { title: '架构与落地', ids: ['deep', 'blueprint', 'compare'] }
   ];
   (function buildTabs() {
     var byId = {}, used = {};
@@ -216,7 +216,7 @@
       if (type === 'QUESTION') {
         var d = document.createElement('details');
         d.className = 'qa';
-        d.innerHTML = '<summary><span class="q">Q</span><span class="qt">' + (title || '面试追问') + '</span>' + ICON.chev + '</summary><div class="qa-body"></div>';
+        d.innerHTML = '<summary><span class="q">Q</span><span class="qt">' + (title || '自测题') + '</span>' + ICON.chev + '</summary><div class="qa-body"></div>';
         var body = d.querySelector('.qa-body');
         while (bq.firstChild) body.appendChild(bq.firstChild);
         bq.replaceWith(d);
@@ -310,7 +310,7 @@
     if (meta.level) html += '<span class="lv lv-' + esc(meta.level) + '">' + esc(meta.level) + '</span>';
     html += '<span class="m">' + ICON.clock + '约 ' + readingMinutes(content) + ' 分钟</span>';
     if (figs) html += '<span class="m">' + ICON.fig + figs + ' 张图解</span>';
-    if (qas) html += '<span class="m">' + ICON.qa + qas + ' 道追问</span>';
+    if (qas) html += '<span class="m">' + ICON.qa + qas + ' 道自测题</span>';
     if (tags.length) html += '<span class="tags">' + tags.map(function (t) { return '<span class="tag">' + esc(t) + '</span>'; }).join('') + '</span>';
     html += '</div>';
     docHead.innerHTML = html;
@@ -373,7 +373,7 @@
     if (!stats) return;
     stats.className = 'stats';
     var set = function (figs, qas) {
-      stats.innerHTML = [[NAV.length, '技术分类'], [pages.length, '篇深度笔记'], [figs, '张原理图解'], [qas, '道面试追问']]
+      stats.innerHTML = [[NAV.length, '个分类'], [pages.length, '篇笔记'], [figs, '张原理图解'], [qas, '道自测题']]
         .map(function (s) { return '<div class="stat"><b>' + s[0] + '</b><span>' + s[1] + '</span></div>'; }).join('');
     };
     set('…', '…');

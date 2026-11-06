@@ -21,10 +21,10 @@ summary: 给 Python 侧框架画一张分层地图，说明各自管哪一层、
 <svg viewBox="0 0 760 280" class="dg" role="img" aria-label="Python Agent 生态分层：模型 SDK、组件库、编排运行时、高层封装与横切工具">
 <rect class="bg" x="20" y="20" width="720" height="54" rx="10"/>
 <text class="tb" x="36" y="40">高层封装</text>
-<rect class="b1" x="150" y="30" width="150" height="34" rx="7"/><text class="ts" x="225" y="47" text-anchor="middle" dominant-baseline="middle">create_agent / Deep Agents</text>
-<rect class="b1" x="312" y="30" width="150" height="34" rx="7"/><text class="ts" x="387" y="47" text-anchor="middle" dominant-baseline="middle">OpenAI Agents SDK</text>
-<rect class="b1" x="474" y="30" width="130" height="34" rx="7"/><text class="ts" x="539" y="47" text-anchor="middle" dominant-baseline="middle">Pydantic AI</text>
-<rect class="b1" x="616" y="30" width="108" height="34" rx="7"/><text class="ts" x="670" y="47" text-anchor="middle" dominant-baseline="middle">CrewAI</text>
+<rect class="b1" x="150" y="30" width="166" height="34" rx="7"/><text class="ts" x="233" y="47" text-anchor="middle" dominant-baseline="middle">create_agent / Deep Agents</text>
+<rect class="b1" x="324" y="30" width="150" height="34" rx="7"/><text class="ts" x="399" y="47" text-anchor="middle" dominant-baseline="middle">OpenAI Agents SDK</text>
+<rect class="b1" x="482" y="30" width="112" height="34" rx="7"/><text class="ts" x="538" y="47" text-anchor="middle" dominant-baseline="middle">Pydantic AI</text>
+<rect class="b1" x="602" y="30" width="122" height="34" rx="7"/><text class="ts" x="663" y="47" text-anchor="middle" dominant-baseline="middle">CrewAI</text>
 <rect class="bg" x="20" y="86" width="720" height="54" rx="10"/>
 <text class="tb" x="36" y="106">编排运行时</text>
 <rect class="b2" x="150" y="96" width="200" height="34" rx="7"/><text class="ts" x="250" y="113" text-anchor="middle" dominant-baseline="middle">LangGraph（状态图 · 检查点）</text>

@@ -1,6 +1,6 @@
 // AI Agent 学习笔记目录
-// 顶层是「大分类」（显示为顶部标签），children 可无限嵌套；叶子节点 path 对应 docs/<path>.md
-// 顺序即学习路径：入门 → 原理 → 模型与提示词 → 上下文与知识 → 工具与协议 → 两条栈 → 工程化 → 深入架构 → 对照落地
+// 顶层是「分类」（由 app.js 的 TAB_GROUPS 归入 5 个顶部标签），children 可无限嵌套；
+// 叶子节点 path 对应 docs/<path>.md，顺序即推荐阅读顺序。
 window.NAV = [
   {
     id: 'start', title: '从这里开始', desc: '先大纲，再详细；学习路线与术语速查',
@@ -129,7 +129,7 @@ window.NAV = [
     ]
   },
   {
-    id: 'engineering', title: '工程化', desc: '本地调试、测试、可观测、交付与运维',
+    id: 'engineering', title: '工程化', desc: '本地调试、测试、可观测、安全与交付运维',
     children: [
       {
         title: '开发期', children: [
@@ -141,6 +141,11 @@ window.NAV = [
         title: '运行期', children: [
           { title: '可观测性：链路、指标与成本归因', path: 'engineering/observability' },
           { title: '交付与运维：配置、CI/CD 与灰度', path: 'engineering/delivery-ops' }
+        ]
+      },
+      {
+        title: '安全与合规', children: [
+          { title: '安全与合规：注入、越权与数据边界', path: 'engineering/security-hardening' }
         ]
       }
     ]
@@ -164,7 +169,35 @@ window.NAV = [
     ]
   },
   {
-    id: 'blueprint', title: '落地架构', desc: '可落地项目架构讲解：分层、契约、数据模型、部署与实施路线',
+    id: 'deep', title: '架构与案例', desc: '两条栈的机制深入、生产架构全景与真实案例',
+    children: [
+      {
+        title: '两条栈的机制', children: [
+          { title: 'Spring AI 机制深入：Advisor 与工具执行链', path: 'deep/spring-ai-internals' },
+          { title: 'Python 编排深入：运行时与持久化执行', path: 'deep/python-internals' },
+          { title: '上下文工程深入：预算、压缩与检索优化', path: 'deep/context-engineering' }
+        ]
+      },
+      {
+        title: '架构与编排', children: [
+          { title: '生产级 Agent 架构全景', path: 'deep/agent-architecture' },
+          { title: 'Agent 工作流编排模式', path: 'deep/agent-workflow' },
+          { title: '多智能体架构与隔离', path: 'deep/multi-agent' }
+        ]
+      },
+      {
+        title: '真实案例', children: [
+          { title: '企业知识库助手架构', path: 'deep/case-kb-agent' },
+          { title: 'Text-to-SQL 智能体：最小安全闭环', path: 'deep/case-text2sql' },
+          { title: '代码助手架构', path: 'deep/case-code-agent' },
+          { title: '运维诊断智能体架构', path: 'deep/case-ops-agent' },
+          { title: '可靠性、成本与评测门禁', path: 'deep/reliability-eval' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'blueprint', title: '落地架构', desc: '可落地项目架构：分层、契约、数据模型、部署与实施',
     children: [
       {
         title: '方法与参考架构', children: [
@@ -180,42 +213,14 @@ window.NAV = [
         ]
       },
       {
-        title: '实施', children: [
+        title: '实施路线', children: [
           { title: '从 MVP 到生产：落地路线与验收清单', path: 'blueprint/delivery-roadmap' }
         ]
       }
     ]
   },
   {
-    id: 'deep', title: '深入与架构', desc: '进阶阅读：机制原理、生产级架构与真实案例',
-    children: [
-      {
-        title: '机制深入', children: [
-          { title: 'Spring AI 机制深入：Advisor 与工具执行链', path: 'deep/spring-ai-internals' },
-          { title: 'Python 编排深入：运行时与持久化执行', path: 'deep/python-internals' },
-          { title: '上下文工程深入：预算、压缩与检索优化', path: 'deep/context-engineering' }
-        ]
-      },
-      {
-        title: '架构与编排', children: [
-          { title: '生产级 Agent 架构全景', path: 'deep/agent-architecture' },
-          { title: 'Agent 工作流编排模式', path: 'deep/agent-workflow' },
-          { title: '多智能体架构与隔离', path: 'deep/multi-agent' }
-        ]
-      },
-      {
-        title: '真实架构案例', children: [
-          { title: '企业知识库助手架构', path: 'deep/case-kb-agent' },
-          { title: 'Text-to-SQL 智能体架构', path: 'deep/case-text2sql' },
-          { title: '代码助手架构', path: 'deep/case-code-agent' },
-          { title: '运维诊断智能体架构', path: 'deep/case-ops-agent' },
-          { title: '可靠性、成本与评测门禁', path: 'deep/reliability-eval' }
-        ]
-      }
-    ]
-  },
-  {
-    id: 'compare', title: '对照与落地', desc: '两边概念映射、选型与上线检查',
+    id: 'compare', title: '对照与选型', desc: '两条栈的概念映射、选型与上线检查',
     children: [
       {
         title: '对照', children: [

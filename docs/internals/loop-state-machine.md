@@ -54,7 +54,7 @@ RunState = {
 <rect class="b5" x="510" y="30" width="110" height="40" rx="9"/><text class="ts" x="565" y="50" text-anchor="middle" dominant-baseline="middle">DONE</text>
 <rect class="b4" x="340" y="130" width="130" height="40" rx="9"/><text class="ts" x="405" y="150" text-anchor="middle" dominant-baseline="middle">WAITING_APPROVAL</text>
 <rect class="b4" x="170" y="130" width="130" height="40" rx="9"/><text class="ts" x="235" y="150" text-anchor="middle" dominant-baseline="middle">WAITING_RETRY</text>
-<rect class="b4" x="510" y="130" width="110" height="40" rx="9"/><text class="ts" x="565" y="150" text-anchor="middle" dominant-baseline="middle">FAILED / CANCEL</text>
+<rect class="b4" x="496" y="130" width="124" height="40" rx="9"/><text class="ts" x="558" y="150" text-anchor="middle" dominant-baseline="middle">FAILED / CANCEL</text>
 <line class="l" x1="130" y1="50" x2="170" y2="50" marker-end="url(#arr)"/>
 <line class="l" x1="300" y1="44" x2="340" y2="44" marker-end="url(#arr)"/>
 <text class="ts" x="320" y="34" text-anchor="middle">tool_calls</text>
@@ -126,7 +126,7 @@ RunState = {
 5. **无条件 append 消息**：恢复后上下文出现重复 tool 结果。
 6. **没有乐观锁**：两个 worker 推进同一个 run，状态互相覆盖。
 
-## 深入追问
+## 自测题
 
 > [!QUESTION] 为什么把循环建模成状态机比写一个 while 更适合生产？
 > 因为「等模型 / 等工具 / 等审批」都是等待外部事件；状态机可被持久化、迁移、恢复与取消，而阻塞 while 崩溃后中间状态全部丢失。

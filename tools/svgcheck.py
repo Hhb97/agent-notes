@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""SVG 图解排版检查（启发式）：在仓库根目录运行 `python tools/svgcheck.py [md 文件或目录 ...]`，默认检查 docs/math。
+"""SVG 图解排版检查（启发式）：在仓库根目录运行 `python tools/svgcheck.py [md 文件或目录 ...]`，默认检查 docs 全站。
 
 按 CSS 里的字号估算每个 <text> 的宽高，报告：
   OVERFLOW  文字超出 viewBox
@@ -125,7 +125,7 @@ def check_svg(svg, label, out):
 
 def main():
     root = pathlib.Path('.').resolve()
-    targets = [pathlib.Path(a) for a in sys.argv[1:]] or [root / 'docs' / 'math']
+    targets = [pathlib.Path(a) for a in sys.argv[1:]] or [root / 'docs']
     files = []
     for t in targets:
         files += sorted(t.rglob('*.md')) if t.is_dir() else [t]

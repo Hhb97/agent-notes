@@ -15,6 +15,10 @@ summary: 沿一次请求的生命周期深入 Spring AI：Advisor 环绕链的�
 > [!NOTE] 版本边界
 > 1.0 GA 之后 Advisor、记忆、工具与 MCP 相关 API 有过多轮调整，1.1 起还在扩展 Agents 能力。本页描述**机制与职责**，具体类名、包名、配置键请以所用版本的官方文档为准（核对时间 2026-11）。
 
+> [!NOTE] 和 Spring AI 系列其它页的分工
+> 用法看 [ChatClient 与 Advisor](#/springai/chatclient)、[工具调用与结构化输出](#/springai/tools)、[记忆、RAG 与 MCP 落地](#/springai/rag-memory)；
+> 本页补的是**链路内部**：一次请求经过哪些 Advisor、工具调用在框架里怎么被分发与回填、出问题该在哪一层插日志。
+
 ## 一、一次请求的完整生命周期
 
 <figure class="fig">
@@ -124,7 +128,7 @@ public interface AdvisorLike {
 5. **流式 + 结构化输出混用**：逐段返回与完整对象解析的语义不同。
 6. **照抄旧版本类名**：1.0 前后注解包、Provider、记忆 API 都调整过。
 
-## 深入追问
+## 自测题
 
 > [!QUESTION] 为什么 Advisor 要设计成「环绕」而不是「前置」？
 > 因为既要改写请求（加历史、加检索片段、注入租户），也要观察响应（写回记忆、记录耗时与 token、做后处理）。环绕语义让同一组件覆盖请求与响应两个方向，还能用顺序表达依赖。

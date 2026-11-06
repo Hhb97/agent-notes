@@ -62,7 +62,7 @@ summary: 把五种 Agent 编排模式放在「自主度 vs 可控度」的谱系
 <rect class="b3" x="310" y="80" width="130" height="44" rx="8"/><text class="ts" x="375" y="102" text-anchor="middle" dominant-baseline="middle">探索节点</text>
 <rect class="b2" x="460" y="80" width="110" height="44" rx="8"/><text class="ts" x="515" y="102" text-anchor="middle" dominant-baseline="middle">人工审批</text>
 <rect class="b4" x="180" y="150" width="390" height="46" rx="8"/>
-<text class="t" x="375" y="173" text-anchor="middle" dominant-baseline="middle">探索节点内部：ReAct 小循环（限轮次、限预算、可随时退回状态图）</text>
+<text class="t" x="375" y="173" text-anchor="middle" dominant-baseline="middle">探索节点内部：ReAct 小循环（限轮次、预算、可退回状态图）</text>
 <rect class="b5" x="620" y="100" width="120" height="48" rx="9"/><text class="tb" x="680" y="124" text-anchor="middle" dominant-baseline="middle">结果校验</text>
 <line class="l" x1="130" y1="124" x2="160" y2="124" marker-end="url(#arr)"/>
 <line class="l" x1="290" y1="102" x2="310" y2="102" marker-end="url(#arr)"/>
@@ -103,7 +103,7 @@ summary: 把五种 Agent 编排模式放在「自主度 vs 可控度」的谱系
 4. **Plan-and-Execute 的计划不落库**：进程重启后无法续跑。
 5. **模式混用时评测只覆盖主路径**：分支、审批拒绝、超预算路径没被测到。
 
-## 深入追问
+## 自测题
 
 > [!QUESTION] 为什么生产系统常用「外层状态图 + 内层 ReAct」而不是纯 ReAct？
 > 硬性的鉴权、审批、落库需要确定性、可测试、可恢复；只有探索类步骤真正需要模型自主。混合结构把自主性限制在局部，同时保住全局可控。
